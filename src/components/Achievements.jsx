@@ -4,11 +4,11 @@ import {
   Trophy, 
   Award, 
   ShieldCheck, 
-  Zap, 
   BrainCircuit, 
   Cloud, 
   FileCheck,
-  Code2
+  Code2,
+  Sparkles
 } from "lucide-react";
 
 const achievements = [
@@ -75,14 +75,14 @@ function RoadmapItem({ item, index }) {
   const isEven = index % 2 === 0;
 
   return (
-    /* Reduced margin-bottom from 32 to 20 to save vertical space */
-    <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group w-full mb-20 last:mb-0">
-      <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-zinc-950 z-20 absolute left-0 md:left-1/2 md:-ml-5 transition-all duration-500 group-hover:scale-110 group-hover:border-white/40 shadow-2xl">
+    <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group w-full mb-12 md:mb-20 last:mb-0">
+      {/* Timeline Dot */}
+      <div className="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/10 bg-zinc-950 z-20 absolute left-0 md:left-1/2 md:-ml-5 transition-all duration-500 group-hover:scale-110 group-hover:border-white/40 shadow-2xl">
         <motion.div 
           initial={{ scale: 0.5, opacity: 0.5 }}
           whileInView={{ scale: [1, 1.2, 1], opacity: 1 }}
           transition={{ repeat: Infinity, duration: 3 }}
-          className="w-2.5 h-2.5 rounded-full" 
+          className="w-2 md:w-2.5 h-2 md:h-2.5 rounded-full" 
           style={{ 
             backgroundColor: item.color,
             boxShadow: `0 0 15px ${item.color}` 
@@ -90,18 +90,18 @@ function RoadmapItem({ item, index }) {
         />
       </div>
 
+      {/* Content Card */}
       <motion.div 
-        initial={{ opacity: 0, x: isEven ? 40 : -40 }}
+        initial={{ opacity: 0, x: typeof window !== 'undefined' && window.innerWidth < 768 ? 20 : (isEven ? 40 : -40) }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6, ease: "circOut" }}
-        /* Reduced width from 45% to 40% and padding from 8 to 6 */
-        className="w-[calc(100%-3.5rem)] md:w-[40%] p-6 rounded-[2rem] bg-zinc-900/20 border border-white/5 backdrop-blur-xl relative overflow-hidden group/card hover:bg-zinc-900/40 transition-all duration-500 ml-auto md:ml-0"
+        className="w-[calc(100%-2.5rem)] md:w-[42%] p-5 md:p-6 rounded-[1.5rem] md:rounded-[2rem] bg-zinc-900/20 border border-white/5 backdrop-blur-xl relative overflow-hidden group/card hover:bg-zinc-900/40 transition-all duration-500 ml-auto md:ml-0"
       >
         {item.type === "certification" && (
-          <div className="absolute top-4 right-6 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-            <FileCheck className="w-2.5 h-2.5 text-zinc-400" />
-            <span className="text-[8px] font-black uppercase tracking-widest text-zinc-400">Verified</span>
+          <div className="absolute top-4 right-5 md:right-6 flex items-center gap-1.5 px-2 py-0.5 md:py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+            <FileCheck className="w-2 md:w-2.5 h-2 md:h-2.5 text-zinc-400" />
+            <span className="text-[7px] md:text-[8px] font-black uppercase tracking-widest text-zinc-400">Verified</span>
           </div>
         )}
 
@@ -110,19 +110,19 @@ function RoadmapItem({ item, index }) {
           style={{ background: `radial-gradient(circle at center, ${item.color}, transparent 70%)` }}
         />
 
-        <div className="relative z-10">
-          <div className="flex items-center gap-4 mb-4">
+        <div className="relative z-10 text-left">
+          <div className="flex items-start md:items-center gap-3 md:gap-4 mb-4">
             <div 
-              className="p-3 rounded-xl bg-white/5 border border-white/10 shadow-inner"
+              className="p-2.5 md:p-3 rounded-xl bg-white/5 border border-white/10 shadow-inner shrink-0"
               style={{ color: item.color }}
             >
-              <Icon className="w-5 h-5" />
+              <Icon className="w-4 h-4 md:w-5 md:h-5" />
             </div>
             <div className="flex flex-col">
-              <span className="text-[9px] font-black uppercase tracking-[0.2em] text-zinc-500 mb-0.5">
+              <span className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] text-zinc-500 mb-0.5">
                 {item.date}
               </span>
-              <h3 className="text-lg font-bold text-white tracking-tight pr-12 md:pr-0">
+              <h3 className="text-base md:text-lg font-bold text-white tracking-tight pr-10 md:pr-0 leading-tight">
                 {item.title}
               </h3>
             </div>
@@ -130,7 +130,7 @@ function RoadmapItem({ item, index }) {
 
           {item.achievement && (
             <div 
-              className="mb-4 inline-flex items-center gap-2 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest border"
+              className="mb-4 inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-[8px] md:text-[9px] font-black uppercase tracking-widest border"
               style={{ 
                 backgroundColor: `${item.color}10`, 
                 borderColor: `${item.color}30`, 
@@ -142,18 +142,18 @@ function RoadmapItem({ item, index }) {
             </div>
           )}
 
-          <p className="text-zinc-400 text-xs leading-relaxed font-medium mb-4">
+          <p className="text-zinc-400 text-[11px] md:text-xs leading-relaxed font-medium mb-4">
             {item.description}
           </p>
 
-          <div className="flex items-center justify-between border-t border-white/5 pt-4">
+          <div className="flex flex-wrap items-center justify-between border-t border-white/5 pt-4 gap-2">
             {item.project && (
-              <div className="flex items-center gap-2 bg-white/5 px-2 py-1 rounded-lg border border-white/5">
-                <span className="text-[8px] font-black uppercase text-zinc-500">Project</span>
-                <span className="text-[10px] text-zinc-200 font-bold tracking-tight">{item.project}</span>
+              <div className="flex items-center gap-2 bg-white/5 px-2 py-0.5 rounded-lg border border-white/5">
+                <span className="text-[7px] md:text-[8px] font-black uppercase text-zinc-500">Project</span>
+                <span className="text-[9px] md:text-[10px] text-zinc-200 font-bold tracking-tight">{item.project}</span>
               </div>
             )}
-            <span className="text-[8px] font-bold text-zinc-600 uppercase tracking-widest ml-auto">{item.issuer}</span>
+            <span className="text-[7px] md:text-[8px] font-bold text-zinc-600 uppercase tracking-widest ml-auto shrink-0">{item.issuer}</span>
           </div>
         </div>
       </motion.div>
@@ -174,57 +174,67 @@ export default function AchievementsRoadmap() {
     restDelta: 0.001
   });
 
-  const stars = useMemo(() => [...Array(40)].map((_, i) => ({
+  const stars = useMemo(() => [...Array(30)].map((_, i) => ({
     id: i,
     top: `${Math.random() * 100}%`,
     left: `${Math.random() * 100}%`,
-    size: Math.random() * 2 + 1,
+    size: Math.random() * 1.5 + 1,
     delay: `${Math.random() * 5}s`,
     duration: `${Math.random() * 3 + 2}s`,
   })), []);
 
   return (
-    <section ref={containerRef} className="py-40 bg-black px-6 relative overflow-hidden" id="about">
+    <section ref={containerRef} className="py-20 md:py-40 bg-black px-4 md:px-6 relative overflow-hidden" id="achievements">
+      {/* Background Elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {stars.map((star) => (
           <div
             key={star.id}
-            className="star absolute bg-white rounded-full opacity-30"
+            className="star absolute bg-white rounded-full opacity-20"
             style={{
               top: star.top,
               left: star.left,
               width: star.size,
               height: star.size,
-              '--delay': star.delay,
-              '--duration': star.duration,
+              animation: `twinkle ${star.duration} infinite ease-in-out ${star.delay}`
             }}
           />
         ))}
       </div>
       
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-24">
+        
+        {/* IMPROVED CHRONICLE HEADER SECTION */}
+        <div className="text-center mb-16 md:mb-24">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="inline-block px-3 py-1 mb-4 rounded-full border border-white/10 bg-white/5 backdrop-blur-md"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full border border-white/10 bg-zinc-900/50 backdrop-blur-xl shadow-[0_0_20px_rgba(255,255,255,0.03)]"
           >
-            <span className="text-[9px] font-black uppercase tracking-[0.4em] text-zinc-400">Chronicle</span>
+            <Sparkles className="w-3 h-3 text-sky-400" />
+            <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.3em] text-zinc-100">
+              Chronicle
+            </span>
           </motion.div>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-white mb-4">
+          
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter text-white mb-6 leading-tight whitespace-nowrap">
             Milestone Roadmap
           </h2>
-          <p className="text-zinc-500 text-sm md:text-base max-w-xl mx-auto font-medium tracking-tight">
+          
+          <p className="text-zinc-500 text-sm md:text-lg max-w-xl mx-auto font-medium leading-relaxed px-2">
             A documentation of technical evolution, competitive success, and industry recognition.
           </p>
         </div>
 
-        <div className="relative pt-12">
-          <div className="absolute left-5 md:left-1/2 md:-ml-[1px] top-0 bottom-0 w-[1.5px] bg-zinc-900" />
+        <div className="relative pt-8 md:pt-12">
+          {/* Static Track Line */}
+          <div className="absolute left-4 md:left-1/2 md:-ml-[1px] top-0 bottom-0 w-[1px] md:w-[1.5px] bg-zinc-900" />
           
+          {/* Animated Progress Line */}
           <motion.div 
             style={{ scaleY }}
-            className="absolute left-5 md:left-1/2 md:-ml-[1px] top-0 bottom-0 w-[1.5px] bg-gradient-to-b from-blue-500 via-emerald-500 to-amber-500 origin-top z-10" 
+            className="absolute left-4 md:left-1/2 md:-ml-[1px] top-0 bottom-0 w-[1px] md:w-[1.5px] bg-gradient-to-b from-blue-500 via-emerald-500 to-amber-500 origin-top z-10" 
           />
 
           <div className="relative">
@@ -234,6 +244,13 @@ export default function AchievementsRoadmap() {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes twinkle {
+          0%, 100% { opacity: 0.2; transform: scale(1); }
+          50% { opacity: 0.5; transform: scale(1.2); }
+        }
+      `}</style>
     </section>
   );
 }

@@ -7,7 +7,8 @@ import Achievements from "./components/Achievements";
 import Education from "./components/Education";
 import BehanceSection from "./components/BehanceSection";
 import AboutSection from "./components/AboutSection";
-import SmoothScroll from "./components/SmoothScroll"; // We'll create this next
+import DownloadCV from "./components/DownloadCV";
+import SmoothScroll from "./components/SmoothScroll"; 
 
 function App() {
   return (
@@ -56,15 +57,17 @@ function App() {
             <Achievements />
           </section>
 
+          <section id="cv">
+            <DownloadCV />
+          </section>
+          
+
           <footer className="py-20 text-center border-t border-white/5 bg-black/50 backdrop-blur-md">
             <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
               <p className="text-zinc-500 text-xs tracking-widest uppercase">
-                © 2026 JC Codelabs.
+                © 2026 Cedie | Systems & Designs.
               </p>
-              <div className="flex gap-8">
-                <a href="#" className="text-zinc-500 hover:text-white transition-colors text-xs uppercase tracking-tighter">Github</a>
-                <a href="#" className="text-zinc-500 hover:text-white transition-colors text-xs uppercase tracking-tighter">LinkedIn</a>
-              </div>
+             
             </div>
           </footer>
         </div>
