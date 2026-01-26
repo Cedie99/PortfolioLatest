@@ -52,9 +52,9 @@ export default function Education() {
             <div className="p-3 w-fit rounded-xl bg-blue-500/10 border border-blue-500/20 mb-4 md:mb-6">
               <BrainCircuit className="w-5 h-5 text-blue-500" />
             </div>
-            <h4 className="text-lg md:text-xl font-bold text-white mb-4 md:mb-6 tracking-tight">Technical Mastery</h4>
+            <h4 className="text-lg md:text-xl font-bold text-white mb-4 md:mb-6 tracking-tight">Relevant Coursework</h4>
             <ul className="grid grid-cols-2 md:grid-cols-1 gap-3 md:gap-4">
-              {['Web Dev', 'UI/UX Design', 'Systems', 'Database', 'Sec'].map((skill) => (
+              {['Web Development', 'UI/UX Design', 'Software Engineering', 'Database Management', 'Cybersecurity'].map((skill) => (
                 <li key={skill} className="flex items-center gap-2 text-zinc-400 text-[11px] md:text-sm">
                   <div className="h-1 w-1 shrink-0 rounded-full bg-blue-500" />
                   {skill}
