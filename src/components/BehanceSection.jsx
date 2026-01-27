@@ -31,7 +31,7 @@ const designProjects = [
     title: "Appliance Warehouse",
     category: "UI/UX Design • Website Redesign",
     image: appliance,
-    link: "https://www.behance.net/your-profile",
+    link: "https://www.figma.com/proto/Z3LV3SO7SILcz4XmQcTABN/Application-Warehouse---Copy?node-id=1-5863&p=f&t=mGeCV0bSWwhT4yv4-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1",
     span: "md:col-span-2",
   },
 ];
