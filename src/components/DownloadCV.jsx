@@ -42,8 +42,8 @@ export default function DownloadCV() {
             <div className="flex flex-row flex-wrap gap-4 pt-4">
               {/* CV Download Button - Icon Only on Mobile */}
               <motion.a
-                href="/Ignacio, Jhon Cedrick -CV.pdf" 
-                download="Ignacio, Jhon Cedrick -CV.pdf"
+                href="/Jhon Cedrick Ignacio - Resume.pdf" 
+                download="Jhon Cedrick Ignacio - Resume.pdf"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="group relative flex items-center justify-center bg-white rounded-2xl md:rounded-full text-black transition-all hover:bg-sky-400 
