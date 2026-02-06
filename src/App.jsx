@@ -14,6 +14,7 @@ import SectionDivider from "./components/SectionDivider";
 import Footer from "./components/Footer";
 import Chatbot from "./components/Chatbot";
 import Testimonials from "./components/Testimonials";
+import GitHubActivity from "./components/GitHubActivity";
 
 function App() {
   return (
@@ -77,6 +78,12 @@ function App() {
 
           <section id="achievements">
             <Achievements />
+          </section>
+
+          <SectionDivider />
+
+          <section id="github">
+            <GitHubActivity />
           </section>
 
           <SectionDivider />
