@@ -15,6 +15,7 @@ import Footer from "./components/Footer";
 import Chatbot from "./components/Chatbot";
 import Testimonials from "./components/Testimonials";
 import GitHubActivity from "./components/GitHubActivity";
+import WorkExperience from "./components/WorkExperience";
 
 function App() {
   return (
@@ -54,6 +55,12 @@ function App() {
 
           <section id="education">
             <Education />
+          </section>
+
+          <SectionDivider />
+
+          <section id="experience">
+            <WorkExperience />
           </section>
 
           <SectionDivider />
