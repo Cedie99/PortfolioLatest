@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
-import { Download, Terminal, Github, Cpu } from "lucide-react"; // Replaced icon
+import { Download, Terminal, Github, Cpu } from "lucide-react";
 
 export default function DownloadCV() {
   return (
     <section className="bg-black py-20 md:py-48 px-6 relative overflow-hidden" id="cv">
-      {/* Background Watermark */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none w-full opacity-[0.03] md:opacity-[0.02] overflow-hidden whitespace-nowrap">
-        <h2 className="text-[25vw] md:text-[18vw] font-black text-white leading-none uppercase tracking-tighter">
-          ENGINEER
+      {/* Background Watermark - Animated horizontal scroll */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none w-[200%] opacity-[0.03] md:opacity-[0.02] overflow-hidden whitespace-nowrap">
+        <h2 className="text-[25vw] md:text-[18vw] font-black text-white leading-none uppercase tracking-tighter animate-watermark">
+          ENGINEER &nbsp; ENGINEER &nbsp; ENGINEER
         </h2>
       </div>
 
@@ -17,10 +17,10 @@ export default function DownloadCV() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 items-start">
-          
+
           {/* Engineering Narrative */}
           <div className="lg:col-span-7 space-y-8 md:space-y-10 text-left">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -31,7 +31,7 @@ export default function DownloadCV() {
             </motion.div>
 
             <h2 className="text-5xl md:text-8xl font-bold tracking-tighter text-white leading-[1.1] md:leading-[0.9]">
-              Compiled <br /> 
+              Compiled <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-500 via-white to-zinc-500 italic">Protocols</span>.
             </h2>
 
@@ -40,23 +40,25 @@ export default function DownloadCV() {
             </p>
 
             <div className="flex flex-row flex-wrap gap-4 pt-4">
-              {/* CV Download Button - Icon Only on Mobile */}
+              {/* CV Download Button with pulse ring */}
               <motion.a
-                href="/Jhon Cedrick Ignacio - Resume.pdf" 
+                href="/Jhon Cedrick Ignacio - Resume.pdf"
                 download="Jhon Cedrick Ignacio - Resume.pdf"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative flex items-center justify-center bg-white rounded-2xl md:rounded-full text-black transition-all hover:bg-sky-400 
+                className="shimmer-btn group relative flex items-center justify-center bg-white rounded-2xl md:rounded-full text-black transition-all hover:bg-sky-400
                            w-14 h-14 md:w-auto md:px-10 md:py-5 shadow-2xl"
               >
-                <Download className="w-5 h-5 md:w-4 md:h-4" />
-                <span className="hidden md:block text-[11px] font-black uppercase tracking-[0.2em] ml-4">Download CV</span>
+                {/* Pulse ring */}
+                <span className="absolute inset-0 rounded-2xl md:rounded-full border-2 border-sky-400/30 animate-ping opacity-40 pointer-events-none" />
+                <Download className="w-5 h-5 md:w-4 md:h-4 relative z-10" />
+                <span className="hidden md:block text-[11px] font-black uppercase tracking-[0.2em] ml-4 relative z-10">Download CV</span>
                 <div className="absolute inset-0 rounded-2xl md:rounded-full bg-sky-400 blur-xl opacity-0 group-hover:opacity-30 transition-opacity" />
               </motion.a>
-              
-              {/* GIT HISTORY BUTTON - Now with GitHub Icon */}
-              <motion.a 
-                href="https://github.com/Cedie99" 
+
+              {/* GIT HISTORY BUTTON */}
+              <motion.a
+                href="https://github.com/Cedie99"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.05)" }}
@@ -71,7 +73,7 @@ export default function DownloadCV() {
           </div>
 
           {/* System Artifact Card */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -79,7 +81,7 @@ export default function DownloadCV() {
           >
             <div className="aspect-square sm:aspect-[3/4] rounded-[2rem] md:rounded-[3rem] bg-zinc-900/10 border border-white/10 backdrop-blur-3xl p-8 md:p-10 relative overflow-hidden group">
               <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:30px_30px] md:bg-[size:40px_40px]" />
-              
+
               <div className="h-full flex flex-col justify-between relative z-10 text-left">
                 <div className="flex justify-between items-start">
                   <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">

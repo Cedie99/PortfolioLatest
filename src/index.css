@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
-/* Magic UI inspired styles */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+/* Google Fonts - Inter with weight 900 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 body {
   margin: 0;
@@ -63,9 +63,45 @@ body {
   animation: float 6s ease-in-out infinite;
 }
 
+/* Float slow - for background orbs */
+@keyframes float-slow {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+.float-slow {
+  animation: float-slow 20s ease-in-out infinite;
+}
+
+/* Gradient shift for orbs */
+@keyframes gradient-shift {
+  0%, 100% { opacity: 0.4; filter: hue-rotate(0deg); }
+  50% { opacity: 0.6; filter: hue-rotate(30deg); }
+}
+
+.gradient-shift {
+  animation: gradient-shift 8s ease-in-out infinite;
+}
+
 /* Border glow */
 .border-glow {
   box-shadow: 0 0 20px rgba(120, 119, 198, 0.1);
+}
+
+/* Noise texture overlay for glassmorphism */
+.noise-texture {
+  position: relative;
+}
+
+.noise-texture::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* Smooth scroll */
@@ -83,12 +119,36 @@ html {
   scrollbar-width: none;
 }
 
-/* Add a velocity-based reveal effect for your project cards */
+/* Chatbot scrollbar - show scrollbar inside chatbot */
+.chatbot-messages::-webkit-scrollbar {
+  display: block;
+  width: 4px;
+}
+
+.chatbot-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.chatbot-messages {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+/* Reveal on scroll */
 .reveal-on-scroll {
   mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }
 
-/* Ensure Lenis works correctly with full-height sections */
+/* Ensure Lenis works correctly */
 html.lenis {
   height: auto;
 }
@@ -109,4 +169,39 @@ html.lenis {
 .star {
   animation: twinkle var(--duration) ease-in-out infinite;
   animation-delay: var(--delay);
+}
+
+/* Skills marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Pulse ring animation */
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid currentColor;
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+/* Watermark scroll animation */
+@keyframes watermark-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-20%); }
+}
+
+.animate-watermark {
+  animation: watermark-scroll 20s linear infinite;
 }

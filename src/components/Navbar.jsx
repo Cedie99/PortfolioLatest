@@ -1,21 +1,21 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  Briefcase, 
-  User, 
-  Mail, 
-  X, 
-  Send, 
-  CheckCircle2, 
-  Github, 
-  Linkedin 
+import {
+  Briefcase,
+  User,
+  Mail,
+  X,
+  Send,
+  CheckCircle2,
+  Github,
+  Linkedin
 } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
 // --- MESSAGE MODAL COMPONENT ---
 const MessageModal = ({ isOpen, onClose }) => {
   const form = useRef();
-  const [status, setStatus] = useState("idle"); // idle, sending, success, error
+  const [status, setStatus] = useState("idle");
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -59,13 +59,13 @@ const MessageModal = ({ isOpen, onClose }) => {
           >
             <AnimatePresence>
               {status === "success" && (
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.8 }} 
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className="absolute inset-0 z-30 bg-zinc-950 flex flex-col items-center justify-center text-center p-6"
                 >
-                  <motion.div 
-                    initial={{ rotate: -45, scale: 0 }} 
+                  <motion.div
+                    initial={{ rotate: -45, scale: 0 }}
                     animate={{ rotate: 0, scale: 1 }}
                     className="w-16 h-16 sm:w-20 sm:h-20 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mb-6"
                   >
@@ -82,8 +82,8 @@ const MessageModal = ({ isOpen, onClose }) => {
                 <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Let's connect.</h2>
                 <p className="text-zinc-500 text-sm mt-1">Send a message for collaborations.</p>
               </div>
-              <button 
-                onClick={onClose} 
+              <button
+                onClick={onClose}
                 className="p-2 hover:bg-white/5 rounded-full text-zinc-500 hover:text-white transition-all"
               >
                 <X size={20} />
@@ -144,21 +144,46 @@ const MessageModal = ({ isOpen, onClose }) => {
 // --- MAIN NAVBAR COMPONENT ---
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+
+  // IntersectionObserver for active section tracking
+  useEffect(() => {
+    const sectionIds = ["home", "about", "skills", "education", "work", "behance", "achievements", "cv"];
+    const observers = [];
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveSection(id);
+          }
+        },
+        { threshold: 0.3, rootMargin: "-10% 0px -60% 0px" }
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((obs) => obs.disconnect());
+  }, []);
 
   const navItems = [
-    { name: "Work", href: "#work", icon: <Briefcase className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />, isExternal: false },
-    { name: "About", href: "#about", icon: <User className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />, isExternal: false },
-    { 
-      name: "GitHub", 
-      href: "https://github.com/Cedie99", 
-      icon: <Github className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />, 
-      isExternal: true 
+    { name: "Work", href: "#work", sectionId: "work", icon: <Briefcase className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />, isExternal: false },
+    { name: "About", href: "#about", sectionId: "about", icon: <User className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />, isExternal: false },
+    {
+      name: "GitHub",
+      href: "https://github.com/Cedie99",
+      icon: <Github className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />,
+      isExternal: true
     },
-    { 
-      name: "LinkedIn", 
-      href: "https://www.linkedin.com/in/jhon-cedrick-ignacio-127944326/", 
-      icon: <Linkedin className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />, 
-      isExternal: true 
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/in/jhon-cedrick-ignacio-127944326/",
+      icon: <Linkedin className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />,
+      isExternal: true
     },
   ];
 
@@ -166,20 +191,14 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Outer container: Fixed at bottom, full width, flex center */}
       <div className="fixed bottom-6 sm:bottom-10 left-0 right-0 flex justify-center z-50 px-4">
-        <motion.nav 
+        <motion.nav
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          /* Key Changes:
-             - Added mx-auto to ensure centering
-             - max-w-fit so it only takes up needed space
-             - items-center for vertical alignment
-          */
-          className="mx-auto flex items-center gap-1 p-1.5 sm:p-2 bg-zinc-900/60 backdrop-blur-2xl border border-white/10 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.5)] w-auto max-w-full"
+          className="mx-auto flex items-center gap-1 p-1.5 sm:p-2 bg-zinc-900/60 backdrop-blur-3xl border border-white/10 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.5)] w-auto max-w-full"
         >
           {/* Logo Button */}
-          <motion.button 
+          <motion.button
             onClick={scrollToTop}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -193,35 +212,48 @@ const Navbar = () => {
 
           <div className="h-6 w-[1px] bg-white/10 mx-1 shrink-0" />
 
-          {/* Navigation Links - allow them to shrink but stay centered */}
+          {/* Navigation Links */}
           <div className="flex items-center overflow-x-auto no-scrollbar">
-            {navItems.map((item) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                target={item.isExternal ? "_blank" : undefined}
-                rel={item.isExternal ? "noopener noreferrer" : undefined}
-                whileHover={{ backgroundColor: "rgba(255,255,255,0.05)" }}
-                className="p-2.5 sm:px-4 sm:py-3 text-zinc-400 hover:text-white rounded-full transition-all flex items-center gap-2 group shrink-0"
-              >
-                {item.icon}
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] hidden xl:block">
-                  {item.name}
-                </span>
-              </motion.a>
-            ))}
+            {navItems.map((item) => {
+              const isActive = !item.isExternal && activeSection === item.sectionId;
+              return (
+                <motion.a
+                  key={item.name}
+                  href={item.href}
+                  target={item.isExternal ? "_blank" : undefined}
+                  rel={item.isExternal ? "noopener noreferrer" : undefined}
+                  whileHover={{ backgroundColor: "rgba(255,255,255,0.05)" }}
+                  className={`relative p-2.5 sm:px-4 sm:py-3 rounded-full transition-all flex items-center gap-2 group shrink-0 ${
+                    isActive ? "text-white" : "text-zinc-400 hover:text-white"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeNav"
+                      className="absolute inset-0 bg-white/10 rounded-full"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{item.icon}</span>
+                  <span className="relative z-10 text-[10px] font-black uppercase tracking-[0.2em] hidden xl:block">
+                    {item.name}
+                  </span>
+                </motion.a>
+              );
+            })}
           </div>
 
           <div className="h-6 w-[1px] bg-white/10 mx-1 shrink-0" />
 
-          {/* Contact Trigger */}
+          {/* Contact Trigger with pulse ring */}
           <motion.button
             onClick={() => setIsModalOpen(true)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-zinc-800 text-white rounded-full hover:bg-zinc-700 transition-all border border-white/5 shrink-0"
+            className="relative w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-zinc-800 text-white rounded-full hover:bg-zinc-700 transition-all border border-white/5 shrink-0"
           >
-            <Mail className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
+            <span className="absolute inset-0 rounded-full border-2 border-sky-400/40 animate-ping opacity-50" />
+            <Mail className="w-4 h-4 sm:w-[18px] sm:h-[18px] relative z-10" />
           </motion.button>
         </motion.nav>
       </div>

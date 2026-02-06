@@ -1,11 +1,11 @@
 import React, { useRef, useMemo } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
-import { 
-  Trophy, 
-  Award, 
-  ShieldCheck, 
-  BrainCircuit, 
-  Cloud, 
+import {
+  Trophy,
+  Award,
+  ShieldCheck,
+  BrainCircuit,
+  Cloud,
   FileCheck,
   Code2,
   Sparkles
@@ -76,27 +76,35 @@ function RoadmapItem({ item, index }) {
 
   return (
     <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group w-full mb-12 md:mb-20 last:mb-0">
-      {/* Timeline Dot */}
+      {/* Timeline Dot with pulse ring */}
       <div className="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/10 bg-zinc-950 z-20 absolute left-0 md:left-1/2 md:-ml-5 transition-all duration-500 group-hover:scale-110 group-hover:border-white/40 shadow-2xl">
-        <motion.div 
+        <motion.div
           initial={{ scale: 0.5, opacity: 0.5 }}
           whileInView={{ scale: [1, 1.2, 1], opacity: 1 }}
           transition={{ repeat: Infinity, duration: 3 }}
-          className="w-2 md:w-2.5 h-2 md:h-2.5 rounded-full" 
-          style={{ 
+          className="w-2 md:w-2.5 h-2 md:h-2.5 rounded-full"
+          style={{
             backgroundColor: item.color,
-            boxShadow: `0 0 15px ${item.color}` 
-          }} 
+            boxShadow: `0 0 15px ${item.color}`
+          }}
+        />
+        {/* Pulse ring */}
+        <motion.div
+          className="absolute inset-0 rounded-full border"
+          style={{ borderColor: item.color }}
+          initial={{ scale: 1, opacity: 0.4 }}
+          whileInView={{ scale: [1, 1.8, 1], opacity: [0.4, 0, 0.4] }}
+          transition={{ repeat: Infinity, duration: 3, ease: "easeOut" }}
         />
       </div>
 
       {/* Content Card */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, x: typeof window !== 'undefined' && window.innerWidth < 768 ? 20 : (isEven ? 40 : -40) }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6, ease: "circOut" }}
-        className="w-[calc(100%-2.5rem)] md:w-[42%] p-5 md:p-6 rounded-[1.5rem] md:rounded-[2rem] bg-zinc-900/20 border border-white/5 backdrop-blur-xl relative overflow-hidden group/card hover:bg-zinc-900/40 transition-all duration-500 ml-auto md:ml-0"
+        className="w-[calc(100%-2.5rem)] md:w-[42%] p-5 md:p-6 rounded-[1.5rem] md:rounded-[2rem] bg-zinc-900/20 border border-white/5 backdrop-blur-xl relative overflow-hidden group/card hover:bg-zinc-900/40 transition-all duration-500 ml-auto md:ml-0 min-h-[180px]"
       >
         {item.type === "certification" && (
           <div className="absolute top-4 right-5 md:right-6 flex items-center gap-1.5 px-2 py-0.5 md:py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
@@ -105,19 +113,29 @@ function RoadmapItem({ item, index }) {
           </div>
         )}
 
-        <div 
-          className="absolute -inset-px opacity-0 group-hover/card:opacity-10 transition-opacity duration-500 pointer-events-none"
+        {/* Enhanced hover glow */}
+        <div
+          className="absolute -inset-px opacity-0 group-hover/card:opacity-20 transition-opacity duration-500 pointer-events-none"
           style={{ background: `radial-gradient(circle at center, ${item.color}, transparent 70%)` }}
+        />
+        {/* Colored box-shadow on hover */}
+        <div
+          className="absolute inset-0 rounded-[1.5rem] md:rounded-[2rem] opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none"
+          style={{ boxShadow: `0 0 30px ${item.color}15, 0 0 60px ${item.color}08` }}
         />
 
         <div className="relative z-10 text-left">
           <div className="flex items-start md:items-center gap-3 md:gap-4 mb-4">
-            <div 
+            {/* Icon with entrance animation */}
+            <motion.div
+              whileInView={{ rotate: [0, -10, 10, 0], scale: [0.8, 1.1, 1] }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               className="p-2.5 md:p-3 rounded-xl bg-white/5 border border-white/10 shadow-inner shrink-0"
               style={{ color: item.color }}
             >
               <Icon className="w-4 h-4 md:w-5 md:h-5" />
-            </div>
+            </motion.div>
             <div className="flex flex-col">
               <span className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] text-zinc-500 mb-0.5">
                 {item.date}
@@ -129,12 +147,12 @@ function RoadmapItem({ item, index }) {
           </div>
 
           {item.achievement && (
-            <div 
+            <div
               className="mb-4 inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-[8px] md:text-[9px] font-black uppercase tracking-widest border"
-              style={{ 
-                backgroundColor: `${item.color}10`, 
-                borderColor: `${item.color}30`, 
-                color: item.color 
+              style={{
+                backgroundColor: `${item.color}10`,
+                borderColor: `${item.color}30`,
+                color: item.color
               }}
             >
               <div className="w-1 h-1 rounded-full animate-pulse" style={{ backgroundColor: item.color }} />
@@ -185,7 +203,7 @@ export default function AchievementsRoadmap() {
 
   return (
     <section ref={containerRef} className="py-20 md:py-40 bg-black px-4 md:px-6 relative overflow-hidden" id="achievements">
-      {/* Background Elements */}
+      {/* Background Stars */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {stars.map((star) => (
           <div
@@ -201,10 +219,9 @@ export default function AchievementsRoadmap() {
           />
         ))}
       </div>
-      
+
       <div className="max-w-6xl mx-auto relative z-10">
-        
-        {/* IMPROVED CHRONICLE HEADER SECTION */}
+        {/* Header */}
         <div className="text-center mb-16 md:mb-24">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -217,11 +234,11 @@ export default function AchievementsRoadmap() {
               Chronicle
             </span>
           </motion.div>
-          
+
           <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter text-white mb-6 leading-tight whitespace-nowrap">
             Milestone Roadmap
           </h2>
-          
+
           <p className="text-zinc-500 text-sm md:text-lg max-w-xl mx-auto font-medium leading-relaxed px-2">
             A documentation of technical evolution, competitive success, and industry recognition.
           </p>
@@ -230,11 +247,11 @@ export default function AchievementsRoadmap() {
         <div className="relative pt-8 md:pt-12">
           {/* Static Track Line */}
           <div className="absolute left-4 md:left-1/2 md:-ml-[1px] top-0 bottom-0 w-[1px] md:w-[1.5px] bg-zinc-900" />
-          
+
           {/* Animated Progress Line */}
-          <motion.div 
+          <motion.div
             style={{ scaleY }}
-            className="absolute left-4 md:left-1/2 md:-ml-[1px] top-0 bottom-0 w-[1px] md:w-[1.5px] bg-gradient-to-b from-blue-500 via-emerald-500 to-amber-500 origin-top z-10" 
+            className="absolute left-4 md:left-1/2 md:-ml-[1px] top-0 bottom-0 w-[1px] md:w-[1.5px] bg-gradient-to-b from-blue-500 via-emerald-500 to-amber-500 origin-top z-10"
           />
 
           <div className="relative">
@@ -244,13 +261,6 @@ export default function AchievementsRoadmap() {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes twinkle {
-          0%, 100% { opacity: 0.2; transform: scale(1); }
-          50% { opacity: 0.5; transform: scale(1.2); }
-        }
-      `}</style>
     </section>
   );
 }
