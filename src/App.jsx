@@ -13,6 +13,7 @@ import ScrollProgress from "./components/ScrollProgress";
 import SectionDivider from "./components/SectionDivider";
 import Footer from "./components/Footer";
 import Chatbot from "./components/Chatbot";
+import Testimonials from "./components/Testimonials";
 import GitHubActivity from "./components/GitHubActivity";
 
 function App() {
@@ -65,6 +66,12 @@ function App() {
 
           <section id="behance">
             <BehanceSection />
+          </section>
+
+          <SectionDivider />
+
+          <section id="testimonials">
+            <Testimonials />
           </section>
 
           <SectionDivider />
