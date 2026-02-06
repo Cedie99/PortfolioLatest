@@ -148,7 +148,7 @@ const Navbar = () => {
 
   // IntersectionObserver for active section tracking
   useEffect(() => {
-    const sectionIds = ["home", "about", "skills", "education", "work", "behance", "achievements", "cv"];
+    const sectionIds = ["home", "about", "skills", "education", "work", "behance", "achievements", "github", "cv"];
     const observers = [];
 
     sectionIds.forEach((id) => {
