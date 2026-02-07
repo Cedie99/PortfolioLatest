@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { GitHubCalendar } from "react-github-calendar";
 import { Github, GitCommit, Star, GitPullRequest } from "lucide-react";
@@ -8,14 +9,47 @@ const customTheme = {
   dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
 };
 
-const stats = [
-  { label: "Repositories", value: "15+", icon: Github },
-  { label: "Contributions", value: "500+", icon: GitCommit },
-  { label: "Stars Earned", value: "10+", icon: Star },
-  { label: "Pull Requests", value: "50+", icon: GitPullRequest },
-];
-
 export default function GitHubActivity() {
+  const [stats, setStats] = useState([
+    { label: "Repositories", value: "—", icon: Github },
+    { label: "Contributions", value: "—", icon: GitCommit },
+    { label: "Stars Earned", value: "—", icon: Star },
+    { label: "Pull Requests", value: "—", icon: GitPullRequest },
+  ]);
+
+  useEffect(() => {
+    async function fetchGitHubStats() {
+      try {
+        const [userRes, reposRes, prsRes, contribRes] = await Promise.all([
+          fetch(`https://api.github.com/users/${GITHUB_USERNAME}`),
+          fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`),
+          fetch(`https://api.github.com/search/issues?q=author:${GITHUB_USERNAME}+type:pr`),
+          fetch(`https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}?y=last`),
+        ]);
+
+        const user = await userRes.json();
+        const repos = await reposRes.json();
+        const prs = await prsRes.json();
+        const contrib = await contribRes.json();
+
+        const totalStars = Array.isArray(repos)
+          ? repos.reduce((sum, repo) => sum + repo.stargazers_count, 0)
+          : 0;
+
+        setStats([
+          { label: "Repositories", value: user.public_repos ?? 0, icon: Github },
+          { label: "Contributions", value: contrib.total?.lastYear ?? 0, icon: GitCommit },
+          { label: "Stars Earned", value: totalStars, icon: Star },
+          { label: "Pull Requests", value: prs.total_count ?? 0, icon: GitPullRequest },
+        ]);
+      } catch {
+        // Keep placeholder values on error
+      }
+    }
+
+    fetchGitHubStats();
+  }, []);
+
   return (
     <section className="bg-black py-20 md:py-32 px-6 relative overflow-hidden" id="github">
       <div className="absolute top-0 right-[-10%] w-[400px] h-[400px] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none" />
