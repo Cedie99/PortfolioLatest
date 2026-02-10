@@ -9,7 +9,6 @@ import {
   CheckCircle2,
   Github,
   Linkedin,
-  MessageSquare
 } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
@@ -149,7 +148,7 @@ const Navbar = () => {
 
   // IntersectionObserver for active section tracking
   useEffect(() => {
-    const sectionIds = ["home", "about", "skills", "education", "experience", "work", "behance", "testimonials", "achievements", "github", "cv"];
+    const sectionIds = ["home", "about", "skills", "education", "experience", "work", "behance", "achievements", "github", "cv"];
     const observers = [];
 
     sectionIds.forEach((id) => {
@@ -174,7 +173,6 @@ const Navbar = () => {
   const navItems = [
     { name: "Work", href: "#work", sectionId: "work", icon: <Briefcase className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />, isExternal: false },
     { name: "About", href: "#about", sectionId: "about", icon: <User className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />, isExternal: false },
-    { name: "Testimonials", href: "#testimonials", sectionId: "testimonials", icon: <MessageSquare className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />, isExternal: false },
     {
       name: "GitHub",
       href: "https://github.com/Cedie99",

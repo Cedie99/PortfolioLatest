@@ -1,4 +1,4 @@
-import { ArrowUp, Github, Linkedin, Palette } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 
 export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -7,12 +7,6 @@ export default function Footer() {
     { name: "Work", href: "#work" },
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
-  ];
-
-  const socials = [
-    { name: "GitHub", href: "https://github.com/Cedie99", icon: Github },
-    { name: "LinkedIn", href: "https://www.linkedin.com/in/jhon-cedrick-ignacio-127944326/", icon: Linkedin },
-    { name: "Behance", href: "https://www.behance.net/johnceignacio", icon: Palette },
   ];
 
   return (
@@ -33,25 +27,6 @@ export default function Footer() {
                 {link.name}
               </a>
             ))}
-          </div>
-
-          {/* Socials */}
-          <div className="flex items-center gap-4">
-            {socials.map((social) => {
-              const Icon = social.icon;
-              return (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/5 text-zinc-500 hover:text-white hover:border-white/20 transition-all"
-                  aria-label={social.name}
-                >
-                  <Icon className="w-4 h-4" />
-                </a>
-              );
-            })}
           </div>
 
           {/* Back to top */}

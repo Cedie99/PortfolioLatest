@@ -3,34 +3,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Bot, User } from "lucide-react";
 import { sendMessage } from "../lib/gemini";
 
-// Fallback responses for when API is unavailable - matched by keywords
-const FALLBACK_RESPONSES = [
-  { keywords: ["skill", "tech", "stack", "know", "language", "framework", "tool"], response: "Cedrick specializes in React, Laravel, Tailwind CSS, JavaScript, PHP, and MySQL. He also has experience with cloud platforms like GCP and Azure, plus UI/UX design with Figma." },
-  { keywords: ["project", "work", "build", "made", "create"], response: "His main projects include Budget Byahe (a transport fare routing app that reached Top 15 at Philippine Startup Challenge 10) and SafeZone PH (a community issue reporting system). Check out more on his GitHub!" },
-  { keywords: ["contact", "reach", "hire", "email", "message", "collaborate"], response: "You can reach Cedrick through the contact form on this website (click the mail icon in the navbar), or connect via LinkedIn and Behance." },
-  { keywords: ["experience", "certif", "achievement", "award"], response: "Cedrick holds certifications from Salesforce (Agentblazer Champion), AWS Cloud Practitioner (Udemy), freeCodeCamp Frontend Dev Libraries, Cisco Cybersecurity, and Simplilearn AI for Web Apps. He also reached Top 15/74 at PSC10." },
-  { keywords: ["budget byahe", "byahe", "capstone", "fare"], response: "Budget Byahe is Cedrick's capstone project - a specialized fare calculation app for Santa Maria, Bulacan's transport network. Built with React, Laravel, Google Maps, and Groq AI. It reached Top 15 out of 74 teams at PSC10! Live at budgetbyahe.com" },
-  { keywords: ["education", "school", "university", "study", "college", "pup"], response: "Cedrick is pursuing BS Information Technology at Polytechnic University of the Philippines (PUP) - Sta. Maria, Bulacan Campus (2022 - Present). Relevant coursework: Web Development, UI/UX Design, Software Engineering, Database Management, and Cybersecurity." },
-  { keywords: ["safezone", "safe zone", "community"], response: "SafeZone PH is a community-focused system built for reporting local issues directly to authorities. Built with React, Laravel, and MySQL." },
-  { keywords: ["design", "behance", "figma", "ui", "ux"], response: "Cedrick has designed several UI/UX projects including a Streaming Application, Budget Byahe SaaS interface, an Online Shopping App, and an Appliance Warehouse website redesign. Check them out on his Behance!" },
-  { keywords: ["who", "about", "cedrick", "cedie", "name"], response: "Jhon Cedrick Ignacio (Cedie) is a Web Developer and UI/UX Designer from Sta. Maria, Bulacan, Philippines. He builds scalable web apps with a focus on clean architecture and expressive motion design." },
-  { keywords: ["github", "linkedin", "link", "social", "portfolio"], response: "Here are Cedrick's links:\n- GitHub: github.com/Cedie99\n- LinkedIn: linkedin.com/in/jhon-cedrick-ignacio-127944326\n- Behance: behance.net/johnceignacio\n- Budget Byahe: budgetbyahe.com" },
-];
-
-function getKeywordResponse(message) {
-  const lowerMessage = message.toLowerCase();
-  for (const entry of FALLBACK_RESPONSES) {
-    if (entry.keywords.some((kw) => lowerMessage.includes(kw))) {
-      return entry.response;
-    }
-  }
-  return "I'm Cedrick's AI assistant. I can tell you about his skills, projects, education, certifications, and how to contact him. What would you like to know?";
-}
+const API_FALLBACK_MESSAGE = "I'm having trouble connecting right now. Feel free to explore the portfolio directly — you can find Cedrick's skills, projects, work experience, education, and certifications in the sections above. You can also reach him through the mail icon in the navbar!";
 
 const QUICK_SUGGESTIONS = [
   "What are Cedrick's skills?",
   "Tell me about Budget Byahe",
-  "How can I contact Cedrick?",
+  "What's Cedrick's work experience?",
 ];
 
 const WELCOME_MESSAGE = {
@@ -95,9 +73,7 @@ export default function Chatbot() {
       setMessages((prev) => [...prev, { role: "assistant", content: response }]);
     } catch (error) {
       console.error("Chatbot error:", error);
-      // Always fall back to keyword-based responses
-      const fallbackResponse = getKeywordResponse(messageText);
-      setMessages((prev) => [...prev, { role: "assistant", content: fallbackResponse }]);
+      setMessages((prev) => [...prev, { role: "assistant", content: API_FALLBACK_MESSAGE }]);
     } finally {
       setIsLoading(false);
     }
