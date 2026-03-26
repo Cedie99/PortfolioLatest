@@ -7,18 +7,18 @@ const ease = [0.16, 1, 0.3, 1];
 
 const OPERATIONS = [
   {
-    company: "Elevora Technologies",
-    role: "Junior Software Engineer",
-    type: "Full-time",
-    period: "Feb 2026 — Present",
+    company: "Oracle Petroleum Corporation",
+    role: "Full Stack Developer",
+    type: "Internship",
+    period: "Mar 2026 — Present",
     active: true,
     highlights: [
-      "Building and shipping end-to-end SaaS product features across the full stack using a T3-inspired architecture (Next.js, tRPC, Prisma, TypeScript)",
-      "Designing and maintaining relational data models in PostgreSQL, writing type-safe database queries through Prisma ORM",
-      "Implementing event-driven background workflows with Inngest to handle async operations like notifications, syncs, and scheduled tasks",
-      "Deploying and managing production services on Vercel's edge infrastructure with CI/CD pipelines for fast, reliable releases",
+      "Developing and maintaining full-stack internal web applications to support petroleum operations and business workflows",
+      "Building responsive, user-facing interfaces with modern frontend frameworks while integrating RESTful APIs on the backend",
+      "Collaborating with senior engineers to design and optimize relational database schemas and server-side logic",
+      "Participating in code reviews, sprint planning, and agile ceremonies to deliver features on schedule",
     ],
-    tools: ["Next.js", "tRPC", "Prisma", "Inngest", "PostgreSQL", "Vercel", "TypeScript"],
+    tools: ["React", "Node.js", "MySQL", "REST APIs", "Git", "TypeScript"],
   },
   {
     company: "SmartBridge",

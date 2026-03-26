@@ -161,7 +161,7 @@ export default function SystemsOverview() {
             Jhon Cedrick Ignacio is a Software Engineer who architects systems that bridge the gap
             between complex logic and human emotion. His approach is technology-agnostic — focusing
             on the most efficient path to a seamless user journey. Currently engineering full-stack
-            SaaS features with a T3-inspired stack at Elevora Technologies.
+            internal web applications as a Full Stack Developer Intern at Oracle Petroleum Corporation.
           </p>
         </motion.div>
 

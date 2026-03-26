@@ -200,7 +200,7 @@ export default function IdentityBrief() {
               { label: "COORDINATES", value: "14.8°N, 120.9°E" },
               { label: "STATUS", value: "AVAILABLE", signal: true },
               { label: "CLEARANCE", value: "FULL-STACK" },
-              { label: "CURRENT OP", value: "ELEVORA TECH" },
+              { label: "CURRENT OP", value: "ORACLE PETROLEUM" },
             ].map((item) => (
               <div key={item.label} className="space-y-1.5">
                 <p className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-zinc-400">
