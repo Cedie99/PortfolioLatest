@@ -50,14 +50,22 @@ Cloud & Deployment: Vercel, Microsoft Azure, Google Cloud Platform (GCP)
    - Collaborating with senior engineers to design and optimize relational database schemas and server-side logic
    - Tools: React, Node.js, MySQL, REST APIs, Git, TypeScript
 
-2. SmartBridge — Salesforce Developer Intern (Remote)
+2. Elevora Technologies — Junior Software Engineer (Full-time)
+   - Period: February 2026 — March 2026
+   - Built and shipped end-to-end SaaS product features across the full stack using a T3-inspired architecture (Next.js, tRPC, Prisma)
+   - Orchestrated async processes with Inngest for event-driven workflows
+   - Designed relational data models in PostgreSQL via Prisma ORM
+   - Leveraged Vercel's edge infrastructure for optimized deployments
+   - Tools: Next.js, tRPC, Prisma, Inngest, PostgreSQL, Vercel, TypeScript
+
+3. SmartBridge — Salesforce Developer Intern (Remote)
    - Period: November 2025 — December 2025
    - Built automated workflows using Salesforce Flows, reducing manual data entry errors
    - Architected custom objects and validation rules to ensure high data integrity across the CRM ecosystem
    - Built and tested automation using Process Builder/Flows to improve operational efficiency
    - Tools: Salesforce, Apex, Flows, Process Builder
 
-3. Appliance Warehouse — UI/UX Designer (Freelance)
+4. Appliance Warehouse — UI/UX Designer (Freelance)
    - Period: November 2025 — December 2025
    - Redesigned e-commerce checkout flows, improving layout hierarchy and accessibility
    - Enhanced conversion potential by optimizing CTA visibility and eliminating visual clutter

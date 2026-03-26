@@ -21,6 +21,20 @@ const OPERATIONS = [
     tools: ["React", "Node.js", "MySQL", "REST APIs", "Git", "TypeScript"],
   },
   {
+    company: "Elevora Technologies",
+    role: "Junior Software Engineer",
+    type: "Full-time",
+    period: "Feb 2026 — Mar 2026",
+    active: false,
+    highlights: [
+      "Built and shipped end-to-end SaaS product features across the full stack using a T3-inspired architecture (Next.js, tRPC, Prisma, TypeScript)",
+      "Designed and maintained relational data models in PostgreSQL, writing type-safe database queries through Prisma ORM",
+      "Implemented event-driven background workflows with Inngest to handle async operations like notifications, syncs, and scheduled tasks",
+      "Deployed and managed production services on Vercel's edge infrastructure with CI/CD pipelines for fast, reliable releases",
+    ],
+    tools: ["Next.js", "tRPC", "Prisma", "Inngest", "PostgreSQL", "Vercel", "TypeScript"],
+  },
+  {
     company: "SmartBridge",
     role: "Salesforce Developer Intern",
     type: "Remote",
