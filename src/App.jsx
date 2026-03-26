@@ -3,7 +3,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import SmoothScroll from "./components/SmoothScroll";
 import MissionNav from "./components/MissionNav";
 import IdentityBrief from "./components/IdentityBrief";
-import { MacbookScroll } from "./components/MacbookScroll";
 import SystemsOverview from "./components/SystemsOverview";
 import MissionLog from "./components/MissionLog";
 import FieldOperations from "./components/FieldOperations";
@@ -14,35 +13,7 @@ import Chatbot from "./components/Chatbot";
 import ScanLine from "./components/ScanLine";
 import MouseSpotlight from "./components/MouseSpotlight";
 
-// Embedded mode — renders portfolio content for the MacBook screen iframe
-const isEmbed = new URLSearchParams(window.location.search).has("embed");
-
 function App() {
-  // Render lightweight version for MacBook screen iframe
-  if (isEmbed) {
-    return (
-      <main className="noise-overlay bg-deep min-h-screen relative">
-        <div className="fixed inset-0 z-0 pointer-events-none">
-          <div className="grid-bg absolute inset-0 opacity-50" />
-        </div>
-        <div className="relative z-10">
-          <IdentityBrief />
-          <ScanLine />
-          <SystemsOverview />
-          <ScanLine />
-          <MissionLog />
-          <ScanLine />
-          <FieldOperations />
-          <ScanLine />
-          <TrainingRecord />
-          <ScanLine />
-          <LiveTelemetry />
-          <ScanLine />
-          <Signal />
-        </div>
-      </main>
-    );
-  }
   const [chatOpen, setChatOpen] = useState(false);
   const { scrollYProgress } = useScroll();
 
@@ -75,17 +46,7 @@ function App() {
         <MissionNav onCommsOpen={() => setChatOpen(true)} />
 
         <div className="relative z-10">
-          {/* MacBook hero — lid opens, zooms into screen, dissolves into portfolio */}
-          <section id="identity" className="w-full">
-            <MacbookScroll
-              title={
-                <span>
-                  <span className="text-sky-400">[</span> Initializing Terminal{" "}
-                  <span className="text-sky-400">]</span>
-                </span>
-              }
-            />
-          </section>
+          <IdentityBrief />
 
           <SystemsOverview />
           <ScanLine />

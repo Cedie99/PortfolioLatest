@@ -5,6 +5,7 @@ import TextReveal from "./TextReveal";
 import { useOutsideClick } from "../hooks/useOutsideClick";
 import budgetByaheVideo from "../assets/bb.mp4";
 import safezoneVid from "../assets/safezone.mp4";
+import meshdb from "../assets/meshdb.mp4";
 import bbDesign from "../assets/bbdesign.png";
 import streamingApp from "../assets/streamingapp.png";
 import appliance from "../assets/appliance.png";
@@ -39,6 +40,20 @@ const WEB_MISSIONS = [
     video: safezoneVid,
     link: null,
   },
+  {
+    designation: "MSN-003",
+    codename: "Mesh DB",
+    year: "2026",
+    status: "DEPLOYED",
+    statusColor: "#4ade80",
+    description:
+      "This project is a community knowledge platform for the web hosting industry, similar to Crunchbase but focused on hosting ecosystem entities.",
+    achievement: "Hosting Ecosystem Intelligence Platform",
+    stack: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind CSS", "NextAuth", "Drizzle"],
+    video: meshdb,
+    link: "https://mesh-db.vercel.app/",
+  },
+  
 ];
 
 const DESIGN_PROJECTS = [
