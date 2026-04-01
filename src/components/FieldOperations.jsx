@@ -23,12 +23,11 @@ const OPERATIONS = [
   {
     company: "Elevora Technologies",
     role: "Junior Software Engineer",
-    type: "Full-time",
+    type: "Short-term",
     period: "Feb 2026 — Mar 2026",
     active: false,
     highlights: [
       "Built and shipped end-to-end SaaS product features across the full stack using a T3-inspired architecture (Next.js, tRPC, Prisma, TypeScript)",
-      "Designed and maintained relational data models in PostgreSQL, writing type-safe database queries through Prisma ORM",
       "Implemented event-driven background workflows with Inngest to handle async operations like notifications, syncs, and scheduled tasks",
       "Deployed and managed production services on Vercel's edge infrastructure with CI/CD pipelines for fast, reliable releases",
     ],

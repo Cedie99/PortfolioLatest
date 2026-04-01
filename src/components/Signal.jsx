@@ -118,7 +118,7 @@ export default function Signal() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
         >
           <MagneticWrapper as="a"
-            href="/Ignacio, Jhon Cedrick S. CV.pdf"
+            href="/Jhon Cedrick S. Ignacio - Resume.pdf"
             download
             className="inline-flex items-center gap-3 px-8 py-4 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-mono text-[10px] font-bold uppercase tracking-widest hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors rounded"
           >
