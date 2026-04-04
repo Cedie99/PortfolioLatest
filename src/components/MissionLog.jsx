@@ -7,6 +7,7 @@ import budgetByaheVideo from "../assets/bb.mp4";
 import safezoneVid from "../assets/safezone.mp4";
 import interviewmyself from "../assets/interviewmyself.mp4";
 import meshdb from "../assets/meshdb.mp4";
+import quantix from "../assets/quantix.mp4";
 import bbDesign from "../assets/bbdesign.png";
 import streamingApp from "../assets/streamingapp.png";
 import appliance from "../assets/appliance.png";
@@ -15,6 +16,19 @@ import vodka from "../assets/vodka.png";
 const ease = [0.16, 1, 0.3, 1];
 
 const WEB_MISSIONS = [
+   {
+    designation: "MSN-005",
+    codename: "Quantix",
+    year: "2026",
+    status: "IN DEVELOPMENT",
+    statusColor: "#f59e0b",
+    description:
+      "Crypto live signal analytics. RSI, MACD, EMAs, Bollinger Bands, Stochastic, Volume, S/R, and Momentum run through a weighted voting engine.",
+    achievement: "Crypto Signal Analytics Platform",
+    stack: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Express", "PostgreSQL"],
+    video: quantix,
+    link: null,
+  },
   {
     designation: "MSN-004",
     codename: "Mesh DB",
