@@ -7,7 +7,7 @@ import budgetByaheVideo from "../assets/bb.mp4";
 import safezoneVid from "../assets/safezone.mp4";
 import interviewmyself from "../assets/interviewmyself.mp4";
 import meshdb from "../assets/meshdb.mp4";
-import quantix from "../assets/quantix.mp4";
+import quant from "../assets/quant.mp4";
 import bbDesign from "../assets/bbdesign.png";
 import streamingApp from "../assets/streamingapp.png";
 import appliance from "../assets/appliance.png";
@@ -26,7 +26,7 @@ const WEB_MISSIONS = [
       "Crypto live signal analytics. RSI, MACD, EMAs, Bollinger Bands, Stochastic, Volume, S/R, and Momentum run through a weighted voting engine.",
     achievement: "Crypto Signal Analytics Platform",
     stack: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Express", "PostgreSQL"],
-    video: quantix,
+    video: quant,
     link: null,
   },
   {
