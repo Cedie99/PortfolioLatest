@@ -8,6 +8,7 @@ import safezoneVid from "../assets/safezone.mp4";
 import interviewmyself from "../assets/interviewmyself.mp4";
 import meshdb from "../assets/meshdb.mp4";
 import quant from "../assets/quant.mp4";
+import finlo from "../assets/finlo.mp4";
 import bbDesign from "../assets/bbdesign.png";
 import streamingApp from "../assets/streamingapp.png";
 import appliance from "../assets/appliance.png";
@@ -16,6 +17,19 @@ import vodka from "../assets/vodka.png";
 const ease = [0.16, 1, 0.3, 1];
 
 const WEB_MISSIONS = [
+  {
+    designation: "MSN-006",
+    codename: "Finlo",
+    year: "2026",
+    status: "IN DEVELOPMENT",
+    statusColor: "#f59e0b",
+    description:
+      "Finlo is a personal finance web app built for real-life budgeting. Track installments, manage cash flow, and decide what is safe to spend.",
+    achievement: "Finance Platform",
+    stack: ["Next.js", "Tailwind CSS", "TypeScript", "TanStack", "PostgreSQL", "Framer Motion", "Decimal.js"],
+    video: finlo,
+    link: null,
+  },
    {
     designation: "MSN-005",
     codename: "Quantix",
@@ -544,7 +558,7 @@ export default function MissionLog() {
                 // Design Ops
               </p>
               <h3 className="text-xl md:text-2xl font-bold tracking-tight text-zinc-900 dark:text-gray-100">
-                Interface Designs
+                User Interface Designs
               </h3>
             </div>
             <a

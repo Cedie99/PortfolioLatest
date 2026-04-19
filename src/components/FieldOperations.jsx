@@ -15,10 +15,9 @@ const OPERATIONS = [
     highlights: [
       "Developing and maintaining full-stack internal web applications to support petroleum operations and business workflows",
       "Building responsive, user-facing interfaces with modern frontend frameworks while integrating RESTful APIs on the backend",
-      "Collaborating with senior engineers to design and optimize relational database schemas and server-side logic",
       "Participating in code reviews, sprint planning, and agile ceremonies to deliver features on schedule",
     ],
-    tools: ["React", "Node.js", "MySQL", "REST APIs", "Git", "TypeScript"],
+    tools: ["Next.js", "Typescript", "PostgreSQL", "Git"],
   },
   {
     company: "Elevora Technologies",
